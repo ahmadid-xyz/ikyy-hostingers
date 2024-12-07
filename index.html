@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic E-commerce</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle, #1f1f1f, #000);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Loading Screen */
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #loading h1 {
+            font-size: 3rem;
+            color: #0ff;
+            text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+            animation: neonGlow 1.5s infinite;
+        }
+
+        @keyframes neonGlow {
+            0%, 100% {
+                text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+            }
+            50% {
+                text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 15px #0ff;
+            }
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        header .profile img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #0ff;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #0ff;
+            text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+            animation: neonPulse 2s infinite;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        header .home-button {
+            margin-top: 10px;
+        }
+
+        header .home-button a {
+            padding: 10px 20px;
+            background: #0ff;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #0ff;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        header .home-button a:hover {
+            background: #fff;
+            box-shadow: 0 0 20px #fff;
+        }
+
+        /* Main Section */
+        .main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .description {
+            margin: 20px auto;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+
+        .description h2 {
+            font-size: 2rem;
+            color: #0ff;
+        }
+
+        .description p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .product {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transition: transform 0.5s, box-shadow 0.5s;
+        }
+
+        .product:hover {
+            transform: scale(1.1) rotateY(10deg);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+        }
+
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-info h2 {
+            font-size: 1.8rem;
+            margin: 0 0 10px;
+            color: #0ff;
+        }
+
+        .product-info p {
+            font-size: 1rem;
+            margin: 0 0 15px;
+        }
+
+        .product-info a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #0ff;
+            color: #000;
+            border-radius: 5px;
+            text-decoration: none;
+            box-shadow: 0 0 10px #0ff;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        .product-info a:hover {
+            background: #fff;
+            box-shadow: 0 0 20px #fff;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #0ff;
+            text-shadow: 0 0 10px #0ff;
+        }
+
+        /* Hologram Effect */
+        .hologram {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .hologram img {
+            width: 50%;
+            filter: brightness(1.5) contrast(1.2) hue-rotate(200deg);
+            animation: float 3s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">
+        <h1>Loading...</h1>
+    </div>
+
+    <header>
+        <div class="profile">
+            <img src="https://img100.pixhost.to/images/651/539830855_skyzopedia.jpg" alt="Profile Picture">
+            <h1>Ikyy Hosting</h1>
+        </div>
+        <div class="home-button">
+            <a href="https://whatsapp.com/channel/0029VadQtKbAojYvvLly5O3h">Support Kami</a>
+        </div>
+    </header>
+
+    <div class="main">
+        <div class="description">
+            <h2>Tentang Produk Kami</h2>
+            <p>Ikyy Hosting adalah penyedia layanan hosting profesional yang menawarkan solusi inovatif dan handal untuk kebutuhan online Anda. Kami menyediakan berbagai paket VPS (Virtual Private Server) dan akun Pterodactyl yang sesuai dengan kebutuhan Anda, baik untuk pengembang, bisnis, atau individu.</p>
+        </div>
+
+        <h2>Layanan Yang Tersedia</h2>
+        <div class="products">
+            <!-- Product 1 -->
+            <div class="product">
+                <img src="https://img100.pixhost.to/images/651/539834511_skyzopedia.jpg" alt="Product 1">
+                <div class="product-info">
+                    <h2>VPS(Virtual Private Server)</h2>
+                    <p>VPS (Virtual Private Server) DigitalOcean adalah layanan komputasi awan yang menyediakan server virtual pribadi dengan spesifikasi yang dapat disesuaikan.</p>
+                    <a href="https://wa.me/6283132240763?text=Bang%20Aku%20Mau%20Beli%20Vps%20bang" target="_blank">Beli Sekarang</a>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product">
+                <img src="https://img100.pixhost.to/images/653/539845807_skyzopedia.jpg" alt="Product 2">
+                <div class="product-info">
+                    <h2>Kebutuhan Hosting Pterodactyl</h2>
+                    <p>Apakah Anda mencari hosting yang handal dan aman untuk proyek Pterodactyl? Kami menawarkan solusi hosting yang sesuai dengan kebutuhan Anda.</p>
+                    <a href="https://wa.me/6283132240763?text=bang%20aku%20mau%20beli%20pterodactyl" target="_blank">Beli Sekarang</a>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product">
+                <img src="https://img100.pixhost.to/images/653/539849931_skyzopedia.jpg" alt="Product 3">
+                <div class="product-info">
+                    <h2>Cotozolala v5</h2>
+                    <p>Bot WhatsApp Cotozolala V5 adalah aplikasi canggih yang dirancang untuk membantu Anda mengelola pesan WhatsApp dengan lebih efisien. Dengan fitur-fitur yang lengkap dan mudah digunakan, bot ini menjadi pilihan ideal untuk bisnis, komunitas, atau individu yang memerlukan otomatisasi pesan.</p>
+                    <a href="https://wa.me/6283132240763" target="_blank">Beli Sekarang</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hologram">
+            <img src="https://img100.pixhost.to/images/651/539830855_skyzopedia.jpg" alt="Hologram Display">
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Ikyy Hosting 2025-2026</p>
+    </footer>
+
+    <script>
+        // Loading Screen Script
+        window.addEventListener("load", () => {
+            document.getElementById("loading").style.display = "none";
+        });
+    </script>
+</body>
+</html>
